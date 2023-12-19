@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thala Checker</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      padding: 8px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0;
+    }
+    .thala-checker-heading {
+      color: black;
+      margin: 10px;
+      display: inline-block;
+      text-decoration: underline;
+      
+    }
+    
+    
+    #output {
+      font-weight: bold;
+      color:gold;
+      margin-top: 20px;
+      display: inline-block;
+      text-decoration: underline;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: rgba(0, 0, 0, 0.4);
+      
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-top: 20px;
+     background-color: rgba(0, 0, 0, 0.1);;
+    }
+    #madeBy {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: red;
+      font-size: 18px;
+      padding: 10px 0;
+      display: block; /* Initially hide the 'Made By' text */
+      text-decoration: underline;
+    }
+    #instagramLink {
+      display: block;
+      margin-top: 10px;
+      color: black;
+      text-decoration: none;
+    }
+
+    #instagramImg {
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="file:///C:/Users/acer/Downloads/hq2.jpg" alt="Thala Logo" id="logoImage"> <br>
+  <video class="background-video" id="bgVideo" loop muted></video>
+  <h2 class="thala-checker-heading" id="displayText">Thala Checker</h2> <br> <br>
+  <input type="text" id="inputField" placeholder="Enter text or numbers"><br>
+  <button onclick="checkInput()">Submit</button> <br> <br> <br> <br> <br> <br>
+  <div id="output"></div>
+  
+  <script>
+
+    function playAudio(audioSrc) {
+      var audio = new Audio(audioSrc);
+      audio.loop = true;
+      audio.play();
+      return audio;
+    }
+
+    function checkInput() {
+      var userInput = document.getElementById('inputField').value;
+      var outputDiv = document.getElementById('output');
+      var bgVideo = document.getElementById('bgVideo');
+      var logoImage = document.getElementById('logoImage');
+     
+
+    // Function to hide the image after 5 seconds
+    setTimeout(function() {
+      logoImage.style.display = 'none';
+    }, 100); // 5000 milliseconds = 5 seconds
+
+    setTimeout(function() {
+      var displayText = document.getElementById('displayText');
+      displayText.style.display = 'none';
+    }, 100);
+
+      function reloadPage(delay) {
+        setTimeout(function() {
+          location.reload();
+        }, delay);
+      }
+
+      if (isNaN(userInput)) { // Check if input is text
+        if (userInput.length === 7) {
+          outputDiv.innerHTML = "Thala For A Reason !!";
+          bgVideo.src = "file:///C:/Users/acer/Downloads/thalayes.mp4";
+          bgVideo.style.opacity = 1;
+          bgVideo.play();
+          var audioYes = playAudio("file:///C:/Users/acer/Downloads/Thalayesaudio.mp3");
+          reloadPage(17000);
+        } else {
+          outputDiv.innerHTML = "You are not Thala";
+          bgVideo.src = "file:///C:/Users/acer/Downloads/thalanot.mp4";
+          bgVideo.style.opacity = 1;
+          bgVideo.play();
+          var audioNo = playAudio("file:///C:/Users/acer/Downloads/thalanotaudio.mp3");
+          reloadPage(8000);
+        }
+      } else { // Check if input is number
+        var sum = 0;
+        for (var i = 0; i < userInput.length; i++) {
+          sum += parseInt(userInput[i]);
+        }
+        if (sum === 7) {
+          outputDiv.innerHTML = "Thala for a reason !!";
+          bgVideo.src = "file:///C:/Users/acer/Downloads/thalayes.mp4";
+          bgVideo.style.opacity = 1;
+          bgVideo.play();
+          var audioYes = playAudio("file:///C:/Users/acer/Downloads/Thalayesaudio.mp3");
+          reloadPage(17000);
+        } else {
+          outputDiv.innerHTML = "You are not Thala";
+          bgVideo.src = "file:///C:/Users/acer/Downloads/thalanot.mp4";
+          bgVideo.style.opacity = 1;
+          bgVideo.play();
+          var audioNo = playAudio("file:///C:/Users/acer/Downloads/thalanotaudio.mp3");
+          reloadPage(8000);
+        }
+      }
+    
+    }
+    
+    
+  </script>
+<br> <bR> <br> <br><br>
+  <div id="madeBy"> "Made By Piyushnshree" </div> <BR>
+  <a id="instagramLink" href="https://www.instagram.com/piyushnshree?igshid=YzVkODRmOTdmMw==" target="_blank">
+    <img id="instagramImg" src="file:///C:/Users/acer/Downloads/instalogo.jpg" alt="Instagram">
+     
+  </a>
+</body>
+
+</html>
